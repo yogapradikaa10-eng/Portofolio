@@ -2059,3 +2059,111 @@ document.addEventListener("DOMContentLoaded", function () {
     updateScrollState();
 
 });
+
+/* =========================================================
+   FEATURED MOTION — CUSTOM PLAY CONTROL
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const media = document.querySelector(".featured-motion-media");
+    const video = document.querySelector(".featured-video");
+    const playButton = document.querySelector(".featured-play-button");
+
+    if (!media || !video || !playButton) {
+        return;
+    }
+
+
+    /* PLAY / PAUSE */
+
+    playButton.addEventListener("click", function (event) {
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        if (video.paused) {
+
+            video.play()
+                .then(function () {
+
+                    media.classList.add("is-playing");
+
+                })
+                .catch(function (error) {
+
+                    console.warn(
+                        "Featured video could not be played:",
+                        error
+                    );
+
+                });
+
+        } else {
+
+            video.pause();
+
+        }
+
+    });
+
+
+    /* VIDEO CLICK */
+
+    video.addEventListener("click", function () {
+
+        if (video.paused) {
+
+            video.play()
+                .then(function () {
+                    media.classList.add("is-playing");
+                });
+
+        } else {
+
+            video.pause();
+
+        }
+
+    });
+
+
+    /* PLAY STATE */
+
+    video.addEventListener("play", function () {
+
+        media.classList.add("is-playing");
+
+    });
+
+
+    /* PAUSE STATE */
+
+    video.addEventListener("pause", function () {
+
+        media.classList.remove("is-playing");
+
+    });
+
+
+    /* END */
+
+    video.addEventListener("ended", function () {
+
+        media.classList.remove("is-playing");
+
+    });
+
+
+    /* VIDEO ERROR */
+
+    video.addEventListener("error", function () {
+
+        console.error(
+            "Featured video failed to load:",
+            video.currentSrc
+        );
+
+    });
+
+});
