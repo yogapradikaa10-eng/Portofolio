@@ -17705,3 +17705,104 @@ html {
     }
 
 }
+
+/* =========================================================
+   FEATURED MOTION — CUSTOM PLAY BUTTON
+========================================================= */
+
+.featured-motion-media {
+    position: relative;
+}
+
+.featured-video {
+    display: block;
+    width: 100%;
+    cursor: pointer;
+}
+
+
+/* PLAY BUTTON */
+
+.featured-play-button {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 4.5rem;
+    height: 4.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transform: translate(-50%, -50%);
+
+    border: 1px solid rgba(255,255,255,0.75);
+    border-radius: 50%;
+
+    background: rgba(18, 20, 30, 0.55);
+    backdrop-filter: blur(8px);
+
+    color: #ffffff;
+
+    font-size: 1.25rem;
+
+    cursor: pointer;
+
+    z-index: 10;
+
+    transition:
+        transform 0.3s cubic-bezier(.22,1,.36,1),
+        background 0.25s ease,
+        opacity 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.featured-play-button:hover {
+    transform: translate(-50%, -50%) scale(1.08);
+
+    background: #7c3aed;
+
+    box-shadow:
+        0 10px 30px rgba(124,58,237,0.3);
+}
+
+
+/* HIDE WHEN PLAYING */
+
+.featured-motion-media.is-playing .featured-play-button {
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+/* SHOW AGAIN AFTER VIDEO ENDS */
+
+.featured-motion-media:not(.is-playing) .featured-play-button {
+    opacity: 1;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .featured-play-button {
+        width: 4rem;
+        height: 4rem;
+        font-size: 1.05rem;
+    }
+
+}
+
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .featured-play-button {
+        transition: none;
+    }
+
+}
