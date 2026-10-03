@@ -16047,21 +16047,23 @@ body.campaign-modal-open {
      PORTRAIT
   ----------------------------------------- */
 
-  .home .image img {
-    width: 92% !important;
+.home .image img {
+  width: 78%;
+  max-width: 660px;
 
-    max-width: 430px !important;
+  margin: 0;
 
-    height: auto !important;
+  position: relative;
+  z-index: 1;
 
-    margin: 0 !important;
+  display: block;
 
-    position: relative !important;
+  border-radius: 0;
 
-    z-index: 2 !important;
+  box-shadow: none;
 
-    transform: translateY(.5rem) !important;
-  }
+  cursor: default;
+}
 
 
   /* -----------------------------------------
